@@ -1,14 +1,14 @@
-import React from "react";
+import React, {Component, Fragment} from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
-class AppRouter extends React.Component {
+class AppRouter extends Component {
     render() {
         return (
             <BrowserRouter>
                 <Switch>
-                    <div>
-                    {/* <Route path="/" exact render={() => <Redirect to={"/game"} />} /> */}
-                    </div>
+                    <Fragment>
+                     <Route path="/" exact render={() => <Redirect to={"/game"} />} />
+                    </Fragment>
                 </Switch>
             </BrowserRouter>
         )
