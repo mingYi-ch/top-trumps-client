@@ -1,4 +1,3 @@
-# ASE_project_client: Top Trumps
 ## ASE_Project_Client
 
 ## Prerequisites and Installation
