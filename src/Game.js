@@ -1,4 +1,5 @@
 import React from "react";
+import Cards from "./Cards"
 
 const NO_OF_ROUNDS = 10
 
@@ -15,6 +16,7 @@ class Game extends React.Component {
         return (
             <div className="game">
                 <div className="game-board">
+                    <Cards/>
                 </div>
                 <div className="game-info">
                     <div>Round {this.state.currentRound}/{NO_OF_ROUNDS}</div>
