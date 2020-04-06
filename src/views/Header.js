@@ -24,7 +24,7 @@ text-align: center;
  */
 const Header = props => {
     return (
-        <Title>Top Trumps</Title>
+        <Title>Top Trumps Movies Edition</Title>
     );
 };
 
