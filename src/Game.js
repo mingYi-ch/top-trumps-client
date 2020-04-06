@@ -12,11 +12,31 @@ class Game extends React.Component {
         };
     }
 
+    // mock data to be replaced by data coming from query
+    playerCard = {
+        rating: 9.44,
+        awardsWon: 5,
+        revenue$: 2000000,
+        durationMin: 127,
+        directorRating: 8.3
+    };
+
+    computerCard = {
+        rating: 8.7,
+        awardsWon: 3,
+        revenue$: 2500000,
+        durationMin: 168,
+        directorRating: 7.9
+    };
+
     render() {
         return (
             <div className="game">
                 <div className="game-board">
-                    <Cards/>
+                    <Cards
+                        playerCard = {this.playerCard}
+                        computerCard = {this.computerCard}
+                    />
                 </div>
                 <div className="game-info">
                     <div>Round {this.state.currentRound}/{NO_OF_ROUNDS}</div>
