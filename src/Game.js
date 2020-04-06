@@ -10,11 +10,12 @@ class Game extends React.Component {
         this.state = {
             currentRound: 1
         };
+        // trigger retrieving new data here eventually
     }
 
     // mock data to be replaced by data coming from query
     playerCard = {
-        rating: 9.44,
+        rating: 9.2,
         awardsWon: 5,
         revenue$: 2000000,
         durationMin: 127,
@@ -29,6 +30,17 @@ class Game extends React.Component {
         directorRating: 7.9
     };
 
+    newGame() {
+        // trigger retrieving new data here eventually
+        this.setState({currentRound: 1});
+        console.log("Game restarted!");
+    }
+
+    handleSelection(chosenFeature) {
+        // add feature trumping logic here eventually
+        console.log("Chosen feature: " + chosenFeature);
+    }
+
     render() {
         return (
             <div className="game">
@@ -36,11 +48,14 @@ class Game extends React.Component {
                     <Cards
                         playerCard = {this.playerCard}
                         computerCard = {this.computerCard}
+                        handleSelection = {this.handleSelection}
                     />
                 </div>
                 <div className="game-info">
                     <div>Round {this.state.currentRound}/{NO_OF_ROUNDS}</div>
-                    <button onClick={() => this.setState({currentRound: this.state.currentRound + 1})}/>
+                    <button onClick={() => this.newGame()}>
+                        New Game
+                    </button>
                 </div>
             </div>
         );

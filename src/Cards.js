@@ -21,22 +21,27 @@ class Cards extends React.Component {
                                     [Movie Poster]
                                 </div>
                                 <FeatureButton
+                                    handleSelection = {this.props.handleSelection}
                                     featureName={"Rating"}
                                     value={this.props.playerCard.rating.toString().concat(" / 10")}
                                 />
                                 <FeatureButton
+                                    handleSelection = {this.props.handleSelection}
                                     featureName={"Awards won"}
                                     value={this.props.playerCard.awardsWon}
                                 />
                                 <FeatureButton
+                                    handleSelection = {this.props.handleSelection}
                                     featureName={"Revenue"}
                                     value={this.props.playerCard.revenue$.toString().concat(" $")}
                                 />
                                 <FeatureButton
+                                    handleSelection = {this.props.handleSelection}
                                     featureName={"Duration"}
                                     value={this.props.playerCard.durationMin.toString().concat(" min")}
                                 />
                                 <FeatureButton
+                                    handleSelection = {this.props.handleSelection}
                                     featureName={"Director rating"}
                                     value={this.props.playerCard.directorRating.toString().concat(" / 10")}
                                 />
@@ -74,7 +79,7 @@ class Cards extends React.Component {
             </table>
         );
     }
-    
+
 }
 
 export default Cards;
