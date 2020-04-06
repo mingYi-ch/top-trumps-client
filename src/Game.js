@@ -38,18 +38,64 @@ class Game extends React.Component {
         console.log("Game restarted!");
     }
 
-    /** Problem with this approach: 'alert' is faster than the updated state to appear in the score section.
-     *  (Scores achieved in last round are neither taken into respect nor displayed here in this method!)
-     *  TODO: Find alternative to 'alert', e.g. implement a rank announcement sub-site.
-    */
     handleRanks() {
+        /**
+         * Not sure whether using setTimeout is good practice here.
+         * The reason I use it is because the callback for the setState
+         * method at l. 81, 82 does not seem to work properly.
+         */
         if (this.state.playerScore > this.state.computerScore) {
-            alert("You win!");
+            setTimeout(() => {
+                alert("You win!");
+                this.newGame();
+            }, 100);
         } else if (this.state.computerScore > this.state.playerScore) {
-            alert("Computer wins!");
+            setTimeout(() => {
+                alert("Computer wins!");
+                this.newGame();
+            }, 100);
         } else {
-            alert("It's a tie!");
+            setTimeout(() => {
+                alert("It's a tie!");
+                this.newGame();
+            }, 100);
         }
+    }
+
+    updateScores (playerFeature, computerFeature) {
+        console.log("updateScores called. currentRound: " + this.state.currentRound);
+        var playerScore = this.state.playerScore;
+        var computerScore = this.state.computerScore;
+
+        if (playerFeature > computerFeature) {
+            ++playerScore;
+        } else if (computerFeature > playerFeature) {
+            ++computerScore;
+        } else {
+            ++playerScore;
+            ++computerScore;
+        }
+
+        this.setState({
+            playerScore: playerScore,
+            computerScore: computerScore
+        }, () => {
+            this.updateRound();
+        });
+    }
+
+    updateRound () {
+        var incrementedRound = this.state.currentRound + 1;
+
+        if (this.state.currentRound === 10) {
+            this.handleRanks();
+            return;
+        }
+        
+        // This is just design choice wrt user interaction.
+        setTimeout(() => {
+            this.setState({currentRound: incrementedRound});
+        }, 300);
     }
 
     handleSelection(chosenFeature) {
@@ -81,27 +127,7 @@ class Game extends React.Component {
                 return;
         }
         
-        var incrementedPlayerScore = this.state.playerScore + 1;
-        var incrementedComputerScore = this.state.computerScore + 1;
-
-        if (playerFeature > computerFeature) {
-            this.setState({playerScore: incrementedPlayerScore});
-        } else if (computerFeature > playerFeature) {
-            this.setState({computerScore: incrementedComputerScore});
-        } else {
-            this.setState({playerScore: incrementedPlayerScore});
-            this.setState({computerScore: incrementedComputerScore});
-        }
-
-        var incrementedRound = this.state.currentRound + 1;
-
-        if (this.state.currentRound === 10) {
-            this.handleRanks();
-            this.newGame();
-            return;
-        }
-        
-        this.setState({currentRound: incrementedRound});
+        this.updateScores(playerFeature, computerFeature);
     }
 
     render() {
