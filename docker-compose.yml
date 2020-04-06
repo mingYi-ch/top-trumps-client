@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  server:
+    image: "koushrk/toptrumps-server"
+    ports:
+      - 5000:5000
+  client:
+    build: .
+
+  db:
+    image: "koushrk/toptrumps-db"
+    ports:
+      - 27017:27017
+ 
