@@ -12,3 +12,4 @@ services:
     image: "koushrk/toptrumps-db"
     ports:
       - 27017:27017
+ 
