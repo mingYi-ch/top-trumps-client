@@ -4,6 +4,23 @@ import FeatureInfo from "./FeatureInfo";
 
 class Cards extends React.Component {
     
+    // mock data to be replaced by data coming from queries
+    playerCard = {
+        rating: 9.2,
+        awardsWon: 5,
+        revenue$: 2000000,
+        durationMin: 127,
+        directorRating: 8.3
+    };
+
+    computerCard = {
+        rating: 8.7,
+        awardsWon: 3,
+        revenue$: 2500000,
+        durationMin: 168,
+        directorRating: 7.9
+    };
+
     render() {
         return (
             <table className="cards">
@@ -22,50 +39,50 @@ class Cards extends React.Component {
                                 </div>
                                 <FeatureButton
                                     featureName={"Rating"}
-                                    value={9.2}
+                                    value={this.playerCard.rating.toString().concat(" / 10")}
                                 />
                                 <FeatureButton
                                     featureName={"Awards won"}
-                                    value={5}
+                                    value={this.playerCard.awardsWon}
                                 />
                                 <FeatureButton
                                     featureName={"Revenue"}
-                                    value={2000000}
+                                    value={this.playerCard.revenue$.toString().concat(" $")}
                                 />
                                 <FeatureButton
                                     featureName={"Duration"}
-                                    value={127}
+                                    value={this.playerCard.durationMin.toString().concat(" min")}
                                 />
                                 <FeatureButton
                                     featureName={"Director rating"}
-                                    value={8.3}
+                                    value={this.playerCard.directorRating.toString().concat(" / 10")}
                                 />
                             </div>
                         </td>
                         <td>
-                            <div className="card">
+                        <div className="card">
                                 <div className="moviePicture">
                                     [Movie Poster]
                                 </div>
                                 <FeatureInfo
                                     featureName={"Rating"}
-                                    value={9.2}
+                                    value={this.computerCard.rating.toString().concat(" / 10")}
                                 />
                                 <FeatureInfo
                                     featureName={"Awards won"}
-                                    value={5}
+                                    value={this.computerCard.awardsWon}
                                 />
                                 <FeatureInfo
                                     featureName={"Revenue"}
-                                    value={2000000}
+                                    value={this.computerCard.revenue$.toString().concat(" $")}
                                 />
                                 <FeatureInfo
                                     featureName={"Duration"}
-                                    value={127}
+                                    value={this.computerCard.durationMin.toString().concat(" min")}
                                 />
                                 <FeatureInfo
                                     featureName={"Director rating"}
-                                    value={8.3}
+                                    value={this.computerCard.directorRating.toString().concat(" / 10")}
                                 />
                             </div>
                         </td>
