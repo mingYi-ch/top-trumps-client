@@ -92,10 +92,7 @@ class Game extends React.Component {
             return;
         }
         
-        // This is just design choice wrt user interaction.
-        setTimeout(() => {
-            this.setState({currentRound: incrementedRound});
-        }, 300);
+        this.setState({currentRound: incrementedRound});
     }
 
     handleSelection(chosenFeature) {
