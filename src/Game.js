@@ -10,30 +10,35 @@ class Game extends React.Component {
         this.handleSelection = this.handleSelection.bind(this);
         this.state = {
             currentRound: 1,
-            // mock data eventually to be replaced by data coming from query
-            playerCard: {    
-                rating: 9.2,
-                awardsWon: 5,
-                revenue$: 2000000,
-                durationMin: 127,
-                directorRating: 8.3
+            playerCard: {
+                rating: 0.0,
+                awardsWon: 0,
+                revenue$: 0,
+                durationMin: 0,
+                directorRating: 0.0
             },
-            // mock data eventually to be replaced by data coming from query
             computerCard: {
-                rating: 8.7,
-                awardsWon: 5,
-                revenue$: 2500000,
-                durationMin: 168,
-                directorRating: 7.9
+                rating: 0.0,
+                awardsWon: 0,
+                revenue$: 0,
+                durationMin: 0,
+                directorRating: 0.0
             },
             playerScore: 0,
             computerScore: 0
         };
-        // trigger retrieving new data here eventually
+    }
+
+    /** 
+     * Using this standard method for synchronization reasons, since
+     * calling retrieveCards() from constructor doesn't work.
+     */
+    componentDidMount() {
+        this.retrieveCards();
     }
 
     newGame() {
-        // trigger retrieving new data here eventually
+        this.retrieveCards();
         this.setState({currentRound: 1, playerScore: 0, computerScore: 0});
         console.log("Game restarted!");
     }
@@ -62,7 +67,7 @@ class Game extends React.Component {
         }
     }
 
-    updateScores (playerFeature, computerFeature) {
+    updateScores(playerFeature, computerFeature) {
         console.log("updateScores called. currentRound: " + this.state.currentRound);
         var playerScore = this.state.playerScore;
         var computerScore = this.state.computerScore;
@@ -84,15 +89,37 @@ class Game extends React.Component {
         });
     }
 
-    updateRound () {
+    updateRound() {
         var incrementedRound = this.state.currentRound + 1;
 
-        if (this.state.currentRound === 10) {
+        if (this.state.currentRound === NO_OF_ROUNDS) {
             this.handleRanks();
             return;
         }
         
         this.setState({currentRound: incrementedRound});
+        this.retrieveCards();
+    }
+
+    retrieveCards() {
+        // eventually query backend's API here
+        // awardsWon is assigned a random value in between 0-10
+        this.setState({
+            playerCard: {
+                rating: 9.2,
+                awardsWon: Math.floor(Math.random() * 11),
+                revenue$: 2000000,
+                durationMin: 127,
+                directorRating: 8.3
+            },
+            computerCard: {
+                rating: 8.7,
+                awardsWon: Math.floor(Math.random() * 11),
+                revenue$: 2500000,
+                durationMin: 168,
+                directorRating: 7.9
+            }
+        });
     }
 
     handleSelection(chosenFeature) {

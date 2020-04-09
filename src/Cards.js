@@ -2,6 +2,9 @@ import React from "react";
 import FeatureButton from "./FeatureButton";
 import FeatureInfo from "./FeatureInfo";
 
+const MAX_MOVIE_RATING = "10";
+const MAX_DIRECTOR_RATING = "10";
+
 class Cards extends React.Component {
     
     render() {
@@ -23,7 +26,7 @@ class Cards extends React.Component {
                                 <FeatureButton
                                     handleSelection = {this.props.handleSelection}
                                     featureName={"Rating"}
-                                    value={this.props.playerCard.rating.toString().concat(" / 10")}
+                                    value={this.props.playerCard.rating.toString().concat(" / ").concat(MAX_MOVIE_RATING)}
                                 />
                                 <FeatureButton
                                     handleSelection = {this.props.handleSelection}
@@ -43,7 +46,7 @@ class Cards extends React.Component {
                                 <FeatureButton
                                     handleSelection = {this.props.handleSelection}
                                     featureName={"Director rating"}
-                                    value={this.props.playerCard.directorRating.toString().concat(" / 10")}
+                                    value={this.props.playerCard.directorRating.toString().concat(" / ").concat(MAX_DIRECTOR_RATING)}
                                 />
                             </div>
                         </td>
@@ -54,7 +57,7 @@ class Cards extends React.Component {
                                 </div>
                                 <FeatureInfo
                                     featureName={"Rating"}
-                                    value={this.props.computerCard.rating.toString().concat(" / 10")}
+                                    value={this.props.computerCard.rating.toString().concat(" / ").concat(MAX_MOVIE_RATING)}
                                 />
                                 <FeatureInfo
                                     featureName={"Awards won"}
@@ -70,7 +73,7 @@ class Cards extends React.Component {
                                 />
                                 <FeatureInfo
                                     featureName={"Director rating"}
-                                    value={this.props.computerCard.directorRating.toString().concat(" / 10")}
+                                    value={this.props.computerCard.directorRating.toString().concat(" / ").concat(MAX_DIRECTOR_RATING)}
                                 />
                             </div>
                         </td>
