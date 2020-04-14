@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-import Login from "../../Login";
+import Login from "../../login/Login";
 
 class AppRouter extends Component {
     render() {
