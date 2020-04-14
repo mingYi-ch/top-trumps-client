@@ -1,5 +1,6 @@
 import React from "react";
-import Cards from "./Cards"
+import Cards from "./cards/Cards";
+import { withRouter } from "react-router-dom";
 
 const NO_OF_ROUNDS = 10
 
@@ -175,4 +176,4 @@ class Game extends React.Component {
     }
 }
 
-export default Game;
+export default withRouter(Game);
