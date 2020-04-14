@@ -40,7 +40,6 @@ class Game extends React.Component {
     newGame() {
         this.retrieveCards();
         this.setState({currentRound: 1, playerScore: 0, computerScore: 0});
-        console.log("Game restarted!");
     }
 
     handleRanks() {
@@ -68,7 +67,6 @@ class Game extends React.Component {
     }
 
     updateScores(playerFeature, computerFeature) {
-        console.log("updateScores called. currentRound: " + this.state.currentRound);
         var playerScore = this.state.playerScore;
         var computerScore = this.state.computerScore;
 
