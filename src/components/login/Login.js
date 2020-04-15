@@ -34,6 +34,11 @@ const Form = styled.div`
   transition: opacity 0.5s ease, transform 0.5s ease;
 `;
 
+const Form_small= styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 const InputField = styled.input`
   &::placeholder {
     color: grey;
@@ -55,6 +60,7 @@ const InputField_small = styled.input`
   }
   height: 35px;
   width: 50px
+  padding-left: 30px;
   padding-top: 6px;
   margin-left: 15px;
   margin-right: 15px;
@@ -73,10 +79,18 @@ const Label = styled.label`
 
 const ButtonContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 50px;
 `;
+
+const Button= styled.button`
+  width: 30%;
+  margin-top: 10px;
+
+`;
+
 
 
 class Login extends Component {
@@ -94,7 +108,7 @@ class Login extends Component {
                         }}/>
 
                         <Label>Year Range of Movies</Label>
-                        <form style = {{display: "flex", flexDirection: "row"}}>
+                        <Form_small>
                             <Label style = {{textTransform:"lowercase"}}>From</Label>
                             <InputField_small 
                             // placeholder={this.state.username}
@@ -108,7 +122,7 @@ class Login extends Component {
                             onChange={e => {
                                 localStorage.setItem("username",e.target.value);
                             }}/>
-                        </form>
+                        </Form_small>
                         
 
                         <Label>genre of Movies</Label>
@@ -124,7 +138,16 @@ class Login extends Component {
                         </datalist>
 
                         <ButtonContainer>
-                          <button style = {{width: "40%"}}>Let's Play!</button>
+                          <Button 
+                            onClick = {() => {this.props.history.push("/gameRule")}}
+                          >
+                            View Game Rule
+                          </Button>
+                          <Button 
+                            onClick = {() => {this.props.history.push("/game")}}
+                          >
+                            Let's Play!
+                          </Button>
                         </ButtonContainer>
                     </Form>
                 </FormContainer>
