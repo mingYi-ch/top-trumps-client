@@ -34,7 +34,7 @@ const Form = styled.div`
   transition: opacity 0.5s ease, transform 0.5s ease;
 `;
 
-const Form_small= styled.div`
+const FormSmall= styled.div`
   display: flex;
   flex-direction: row;
 `;
@@ -54,7 +54,7 @@ const InputField = styled.input`
   color: white;
 `;
 
-const InputField_small = styled.input`
+const InputFieldSmall = styled.input`
   &::placeholder {
     color: rgba(255, 255, 255, 0.2);
   }
@@ -108,21 +108,21 @@ class Login extends Component {
                         }}/>
 
                         <Label>Year Range of Movies</Label>
-                        <Form_small>
+                        <FormSmall>
                             <Label style = {{textTransform:"lowercase"}}>From</Label>
-                            <InputField_small 
+                            <InputFieldSmall 
                             // placeholder={this.state.username}
                             onChange={e => {
                                 localStorage.setItem("username",e.target.value);
                             }}/>
 
                             <Label style = {{textTransform:"lowercase"}}>to</Label>
-                            <InputField_small
+                            <InputFieldSmall
                             // placeholder={this.state.username}
                             onChange={e => {
                                 localStorage.setItem("username",e.target.value);
                             }}/>
-                        </Form_small>
+                        </FormSmall>
                         
 
                         <Label>genre of Movies</Label>
@@ -139,7 +139,7 @@ class Login extends Component {
 
                         <ButtonContainer>
                           <Button 
-                            onClick = {() => {this.props.history.push("/gameRule")}}
+                            // onClick = {() => {this.props.history.push("/gameRule")}}
                           >
                             View Game Rule
                           </Button>
