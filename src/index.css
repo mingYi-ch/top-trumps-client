@@ -28,3 +28,33 @@ button {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
+
+.game {
+  text-align: center;
+}
+
+.cards {
+  margin: auto;
+  padding: 30px;
+}
+
+.card {
+  text-align: left;
+  border: solid black 1px;
+  margin: 20px;
+  padding: 50px;
+}
+
+.game-info {
+  font-size: small;
+  padding: 10px;
+}
+
+.moviePicture {
+  text-align: center;
+  border: solid black 1px;
+  margin: 20px;
+  padding: 20px;
+  white-space: nowrap;
+  height: 200px; /* change this eventually */
+}
