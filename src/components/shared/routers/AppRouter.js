@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import Login from "../../login/Login";
 import Game from "../../game/Game";
 
 class AppRouter extends Component {
@@ -8,11 +9,15 @@ class AppRouter extends Component {
             <BrowserRouter>
                 <Switch>
                     <Fragment>
+                        <Route 
+                            path = "/login" 
+                            render = {() => <Login/> }
+                        />
                      <Route 
                         path = "/game"
                         render = {() => <Game/> }
                      />
-                     <Route path="/" exact render={() => <Redirect to={"/game"} />} />
+                     <Route path="/" exact render={() => <Redirect to={"/login"} />} />
                     </Fragment>
                 </Switch>
             </BrowserRouter>

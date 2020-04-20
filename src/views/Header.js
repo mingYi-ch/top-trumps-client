@@ -24,7 +24,11 @@ text-align: center;
  */
 const Header = props => {
     return (
-        <Title>Top Trumps Movies Edition</Title>
+        <Title>Top Trumps
+            <sup style = {{fontSize: "14px", fontStyle: "italic", color:"#808080"}}>
+                movie edition
+            </sup>
+        </Title>
     );
 };
 
