@@ -12,18 +12,18 @@ class Game extends React.Component {
         this.state = {
             currentRound: 1,
             playerCard: {
-                rating: 0.0,
-                awardsWon: 0,
+                title: "Movie A (player)",
+                popularity: 0.0,
                 revenue$: 0,
-                durationMin: 0,
-                directorRating: 0.0
+                budget$: 0,
+                runtimeMin: 0.0
             },
             computerCard: {
-                rating: 0.0,
-                awardsWon: 0,
+                title: "Movie B (computer)",
+                popularity: 0.0,
                 revenue$: 0,
-                durationMin: 0,
-                directorRating: 0.0
+                budget$: 0,
+                runtimeMin: 0.0
             },
             playerScore: 0,
             computerScore: 0
@@ -105,19 +105,19 @@ class Game extends React.Component {
         // awardsWon is assigned a random value in between 0-10
         this.setState({
             playerCard: {
-                rating: 9.2,
-                awardsWon: Math.floor(Math.random() * 11),
-                revenue$: 2000000,
-                durationMin: 127,
-                directorRating: 8.3
+                title: "A Clockwork Orange",
+                popularity: 0.87,
+                revenue$: 2400000,
+                budget$: 900000,
+                runtimeMin: 127.0
             },
             computerCard: {
-                rating: 8.7,
-                awardsWon: Math.floor(Math.random() * 11),
-                revenue$: 2500000,
-                durationMin: 168,
-                directorRating: 7.9
-            }
+                title: "The Shining",
+                popularity: 0.91,
+                revenue$: 3300000,
+                budget$: 1300000,
+                runtimeMin: 140.0
+            },
         });
     }
 
@@ -125,25 +125,21 @@ class Game extends React.Component {
         var playerFeature, computerFeature;
 
         switch (chosenFeature) {
-            case "Rating":
-                playerFeature = this.state.playerCard.rating;
-                computerFeature = this.state.computerCard.rating;
-                break;
-            case "Awards won":
-                playerFeature = this.state.playerCard.awardsWon;
-                computerFeature = this.state.computerCard.awardsWon;
+            case "Popularity":
+                playerFeature = this.state.playerCard.popularity;
+                computerFeature = this.state.computerCard.popularity;
                 break;
             case "Revenue":
                 playerFeature = this.state.playerCard.revenue$;
                 computerFeature = this.state.computerCard.revenue$;
                 break;
-            case "Duration":
-                playerFeature = this.state.playerCard.durationMin;
-                computerFeature = this.state.computerCard.durationMin;
+            case "Budget":
+                playerFeature = this.state.playerCard.budget$;
+                computerFeature = this.state.computerCard.budget$;
                 break;
-            case "Director rating":
-                playerFeature = this.state.playerCard.directorRating;
-                computerFeature = this.state.computerCard.directorRating;
+            case "Run time":
+                playerFeature = this.state.playerCard.runtimeMin;
+                computerFeature = this.state.computerCard.runtimeMin;
                 break;
             default:
                 console.error("Chosen feature not handled in Game class!");

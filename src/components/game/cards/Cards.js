@@ -2,9 +2,6 @@ import React from "react";
 import FeatureButton from "./FeatureButton";
 import FeatureInfo from "./FeatureInfo";
 
-const MAX_MOVIE_RATING = "10";
-const MAX_DIRECTOR_RATING = "10";
-
 class Cards extends React.Component {
     
     render() {
@@ -23,15 +20,14 @@ class Cards extends React.Component {
                                 <div className="moviePicture">
                                     [Movie Poster]
                                 </div>
-                                <FeatureButton
-                                    handleSelection = {this.props.handleSelection}
-                                    featureName={"Rating"}
-                                    value={this.props.playerCard.rating.toString().concat(" / ").concat(MAX_MOVIE_RATING)}
+                                <FeatureInfo
+                                    featureName={"Title"}
+                                    value={this.props.playerCard.title}
                                 />
                                 <FeatureButton
                                     handleSelection = {this.props.handleSelection}
-                                    featureName={"Awards won"}
-                                    value={this.props.playerCard.awardsWon}
+                                    featureName={"Popularity"}
+                                    value={this.props.playerCard.popularity}
                                 />
                                 <FeatureButton
                                     handleSelection = {this.props.handleSelection}
@@ -40,13 +36,13 @@ class Cards extends React.Component {
                                 />
                                 <FeatureButton
                                     handleSelection = {this.props.handleSelection}
-                                    featureName={"Duration"}
-                                    value={this.props.playerCard.durationMin.toString().concat(" min")}
+                                    featureName={"Budget"}
+                                    value={this.props.playerCard.budget$.toString().concat(" $")}
                                 />
                                 <FeatureButton
                                     handleSelection = {this.props.handleSelection}
-                                    featureName={"Director rating"}
-                                    value={this.props.playerCard.directorRating.toString().concat(" / ").concat(MAX_DIRECTOR_RATING)}
+                                    featureName={"Run time"}
+                                    value={this.props.playerCard.runtimeMin.toString().concat(" min")}
                                 />
                             </div>
                         </td>
@@ -56,24 +52,24 @@ class Cards extends React.Component {
                                     [Movie Poster]
                                 </div>
                                 <FeatureInfo
-                                    featureName={"Rating"}
-                                    value={this.props.computerCard.rating.toString().concat(" / ").concat(MAX_MOVIE_RATING)}
+                                    featureName={"Title"}
+                                    value={this.props.computerCard.title}
                                 />
                                 <FeatureInfo
-                                    featureName={"Awards won"}
-                                    value={this.props.computerCard.awardsWon}
+                                    featureName={"Popularity"}
+                                    value={this.props.computerCard.popularity}
                                 />
                                 <FeatureInfo
                                     featureName={"Revenue"}
                                     value={this.props.computerCard.revenue$.toString().concat(" $")}
                                 />
                                 <FeatureInfo
-                                    featureName={"Duration"}
-                                    value={this.props.computerCard.durationMin.toString().concat(" min")}
+                                    featureName={"Budget"}
+                                    value={this.props.computerCard.budget$.toString().concat(" $")}
                                 />
                                 <FeatureInfo
-                                    featureName={"Director rating"}
-                                    value={this.props.computerCard.directorRating.toString().concat(" / ").concat(MAX_DIRECTOR_RATING)}
+                                    featureName={"Run time"}
+                                    value={this.props.computerCard.runtimeMin.toString().concat(" min")}
                                 />
                             </div>
                         </td>
