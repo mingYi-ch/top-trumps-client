@@ -31,6 +31,11 @@ class Cards extends React.Component {
                                 />
                                 <FeatureButton
                                     handleSelection = {this.props.handleSelection}
+                                    featureName={"Rating"}
+                                    value={this.props.playerCard.rating}
+                                />
+                                <FeatureButton
+                                    handleSelection = {this.props.handleSelection}
                                     featureName={"Revenue"}
                                     value={this.props.playerCard.revenue$.toString().concat(" $")}
                                 />
@@ -58,6 +63,10 @@ class Cards extends React.Component {
                                 <FeatureInfo
                                     featureName={"Popularity"}
                                     value={this.props.computerCard.popularity}
+                                />
+                                <FeatureInfo
+                                    featureName={"Rating"}
+                                    value={this.props.computerCard.rating}
                                 />
                                 <FeatureInfo
                                     featureName={"Revenue"}

@@ -13,14 +13,18 @@ class Game extends React.Component {
             currentRound: 1,
             playerCard: {
                 title: "Movie A (player)",
+                poster_path: "/au9lFA5a2ZnBKCzPbZQf00r7J64.jpg",
                 popularity: 0.0,
+                rating: 0.0,
                 revenue$: 0,
                 budget$: 0,
                 runtimeMin: 0.0
             },
             computerCard: {
                 title: "Movie B (computer)",
+                poster_path: "/4sUo2eUsVctI2WFg6bNNexycFOr.jpg",
                 popularity: 0.0,
+                rating: 0.0,
                 revenue$: 0,
                 budget$: 0,
                 runtimeMin: 0.0
@@ -106,14 +110,18 @@ class Game extends React.Component {
         this.setState({
             playerCard: {
                 title: "A Clockwork Orange",
+                poster_path: "/1uHA1xOzrQczAmXvs4ji3XmKG6b.jpg",
                 popularity: 0.87,
+                rating: 3.1,
                 revenue$: 2400000,
                 budget$: 900000,
                 runtimeMin: 127.0
             },
             computerCard: {
                 title: "The Shining",
+                poster_path: "/b4OaXw2MW97VvIiZE0Sbn1NfxSh.jpg",
                 popularity: 0.91,
+                rating: 3.5,
                 revenue$: 3300000,
                 budget$: 1300000,
                 runtimeMin: 140.0
@@ -129,6 +137,9 @@ class Game extends React.Component {
                 playerFeature = this.state.playerCard.popularity;
                 computerFeature = this.state.computerCard.popularity;
                 break;
+            case "Rating":
+                playerFeature = this.state.playerCard.rating;
+                computerFeature = this.state.computerCard.rating;
             case "Revenue":
                 playerFeature = this.state.playerCard.revenue$;
                 computerFeature = this.state.computerCard.revenue$;
