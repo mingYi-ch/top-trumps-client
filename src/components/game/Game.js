@@ -14,6 +14,7 @@ class Game extends React.Component {
         this.handleSelection = this.handleSelection.bind(this);
         this.state = {
             currentRound: 1,
+            cardsData: undefined,
             playerCard: {
                 title: "Movie A (player)",
                 poster_path: "/au9lFA5a2ZnBKCzPbZQf00r7J64.jpg",
@@ -107,6 +108,10 @@ class Game extends React.Component {
         // this.retrieveCards();
     }
 
+    updateCards () {
+        console.log(this.state.cardsData); // [Object.keys(this.state.cardsData)[19]]
+    }
+
     retrieveCards() {
         // eventually query backend's API here
         // awardsWon is assigned a random value in between 0-10
@@ -120,7 +125,9 @@ class Game extends React.Component {
 
         fetch(fetchURL)
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => this.setState({cardsData: data},
+                () => this.updateCards()    
+            )) // 
             .catch(error => {
                 console.error("Failed to fetch data");
                 return;
