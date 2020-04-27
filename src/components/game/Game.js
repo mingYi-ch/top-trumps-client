@@ -2,7 +2,10 @@ import React from "react";
 import Cards from "./cards/Cards";
 import { withRouter } from "react-router-dom";
 
-const NO_OF_ROUNDS = 10
+const NO_OF_ROUNDS = 10;
+const API_HOST = "0.0.0.0";
+const API_PORT = "5001"
+const POSTER_PREFIX = "http://image.tmdb.org/t/p/w185/";
 
 class Game extends React.Component {
 
@@ -101,12 +104,29 @@ class Game extends React.Component {
         }
         
         this.setState({currentRound: incrementedRound});
-        this.retrieveCards();
+        // this.retrieveCards();
     }
 
     retrieveCards() {
         // eventually query backend's API here
         // awardsWon is assigned a random value in between 0-10
+
+        // TODO: Update game nr after each game
+        let fetchURL = "http://"
+            .concat(API_HOST)
+            .concat(":")
+            .concat(API_PORT)
+            .concat("/game/1");
+
+        fetch(fetchURL)
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => {
+                console.error("Failed to fetch data");
+                return;
+            }
+        );
+
         this.setState({
             playerCard: {
                 title: "A Clockwork Orange",
