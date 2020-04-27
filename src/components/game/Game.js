@@ -160,6 +160,7 @@ class Game extends React.Component {
             case "Rating":
                 playerFeature = this.state.playerCard.rating;
                 computerFeature = this.state.computerCard.rating;
+                break;
             case "Revenue":
                 playerFeature = this.state.playerCard.revenue$;
                 computerFeature = this.state.computerCard.revenue$;
