@@ -17,7 +17,7 @@ class Game extends React.Component {
             cardsData: undefined,
             playerCard: {
                 title: "Movie A (player)",
-                poster_path: "/au9lFA5a2ZnBKCzPbZQf00r7J64.jpg",
+                poster_path: "abc.jpg",
                 popularity: 0.0,
                 rating: 0.0,
                 revenue$: 0,
@@ -26,7 +26,7 @@ class Game extends React.Component {
             },
             computerCard: {
                 title: "Movie B (computer)",
-                poster_path: "/4sUo2eUsVctI2WFg6bNNexycFOr.jpg",
+                poster_path: "xyz.jpg",
                 popularity: 0.0,
                 rating: 0.0,
                 revenue$: 0,
@@ -104,18 +104,39 @@ class Game extends React.Component {
             return;
         }
         
-        this.setState({currentRound: incrementedRound});
-        // this.retrieveCards();
+        this.setState({currentRound: incrementedRound}, () => this.updateCards());
     }
 
     updateCards () {
-        console.log(this.state.cardsData); // [Object.keys(this.state.cardsData)[19]]
+        let playerCardIndex = 2 * this.state.currentRound - 2;
+        let computerCardIndex = playerCardIndex + 1;
+        console.log("playerCardIndex: ".concat(playerCardIndex));
+        let card1 = this.state.cardsData[Object.keys(this.state.cardsData)[playerCardIndex]];
+        let card2 = this.state.cardsData[Object.keys(this.state.cardsData)[computerCardIndex]];
+        
+        this.setState({
+            playerCard: {
+                title: card1.title,
+                poster_path: POSTER_PREFIX.concat(card1.poster_path),
+                popularity: card1.popularity,
+                rating: card1.rating,
+                revenue$: card1.revenue,
+                budget$: card1.budget,
+                runtimeMin: card1.runtime
+            },
+            computerCard: {
+                title: card2.title,
+                poster_path: POSTER_PREFIX.concat(card1.poster_path),
+                popularity: card2.popularity,
+                rating: card2.rating,
+                revenue$: card2.revenue,
+                budget$: card2.budget,
+                runtimeMin: card2.runtime
+            },
+        });
     }
 
     retrieveCards() {
-        // eventually query backend's API here
-        // awardsWon is assigned a random value in between 0-10
-
         // TODO: Update game nr after each game
         let fetchURL = "http://"
             .concat(API_HOST)
@@ -126,34 +147,12 @@ class Game extends React.Component {
         fetch(fetchURL)
             .then(response => response.json())
             .then(data => this.setState({cardsData: data},
-                () => this.updateCards()    
-            )) // 
+                () => this.updateCards() ))
             .catch(error => {
                 console.error("Failed to fetch data");
                 return;
             }
         );
-
-        this.setState({
-            playerCard: {
-                title: "A Clockwork Orange",
-                poster_path: "/1uHA1xOzrQczAmXvs4ji3XmKG6b.jpg",
-                popularity: 0.87,
-                rating: 3.1,
-                revenue$: 2400000,
-                budget$: 900000,
-                runtimeMin: 127.0
-            },
-            computerCard: {
-                title: "The Shining",
-                poster_path: "/b4OaXw2MW97VvIiZE0Sbn1NfxSh.jpg",
-                popularity: 0.91,
-                rating: 3.5,
-                revenue$: 3300000,
-                budget$: 1300000,
-                runtimeMin: 140.0
-            },
-        });
     }
 
     handleSelection(chosenFeature) {
