@@ -4,9 +4,9 @@ services:
   server:
     image: "koushrk/toptrumps-server"
     ports:
-      - 5000:5000
+      - 5001:5001
   client:
-    build: .
+    image: "koushrk/toptrumps-client"
     ports:
       - 3000:3000
 
@@ -14,4 +14,3 @@ services:
     image: "koushrk/toptrumps-db"
     ports:
       - 27017:27017
- 
