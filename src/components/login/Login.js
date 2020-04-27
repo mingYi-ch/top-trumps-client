@@ -110,7 +110,7 @@ class Login extends Component {
                         <Label>Year Range of Movies</Label>
                         <FormSmall>
                             <Label style = {{textTransform:"lowercase"}}>From</Label>
-                            <InputFieldSmall 
+                            <InputFieldSmall
                             // placeholder={this.state.username}
                             onChange={e => {
                                 localStorage.setItem("username",e.target.value);
@@ -123,7 +123,7 @@ class Login extends Component {
                                 localStorage.setItem("username",e.target.value);
                             }}/>
                         </FormSmall>
-                        
+
 
                         <Label>genre of Movies</Label>
                         <InputField list = "genre" autoComplete = "on"
@@ -139,11 +139,11 @@ class Login extends Component {
 
                         <ButtonContainer>
                           <Button 
-                            // onClick = {() => {this.props.history.push("/gameRule")}}
+                            onClick = {() => {this.props.history.push("/rules")}}
                           >
                             View Game Rule
                           </Button>
-                          <Button 
+                          <Button
                             onClick = {() => {this.props.history.push("/game")}}
                           >
                             Let's Play!
@@ -159,4 +159,4 @@ class Login extends Component {
 
 
 // the router component handle the order that the component displayed on the web
-export default withRouter(Login); 
+export default withRouter(Login);
