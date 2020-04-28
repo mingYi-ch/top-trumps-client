@@ -21,12 +21,15 @@ const styles = {
 };
 
 const rules = [
-  'Initially from a deck of 20 cards computer and player are alloted 10 cards each randomly.',
-  'There are 10 rounds. In each round player selects a feature of movie card to compete on.',
-  'If the selected feature is better than computer\'s card, player receive points.',
-  'To decide which feature is better, following rules are applied:',
-  '   Higher budget is better.',
-  '   Longer duration is better.'
+  'Initially, from a deck of 20 cards, player and computer (opponent) are allocated 10 cards randomly.',
+  'There are 10 rounds. In each round the player selects a feature on their movie card to compete on.',
+  'If the selected feature is better than the computer\'s card, the player receives points, and vice versa.',
+  'To decide which feature values trump the opponent\'s values, following rules are applied:',
+  '   Higher popularity trumps lower popularity.',
+  '   Higher rating trumps lower rating.',
+  '   Higher revenue trumps lower revenue.',
+  '   Higher budget trumps lower budget.',
+  '   Longer run time trumps shorter run time.'
 ]
 
 const items = rules.map((rule, idx) => {
@@ -52,7 +55,7 @@ class Rules extends Component {
                     Rules
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
-                    <ul> {items} </ul>;
+                    <ul> {items} </ul>
                   </Typography>
                 </CardContent>
               </CardActionArea>
