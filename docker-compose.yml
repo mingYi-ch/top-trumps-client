@@ -5,10 +5,15 @@ services:
     image: "koushrk/toptrumps-server"
     ports:
       - 5001:5001
+    depends_on:
+      - db
+
   client:
     image: "koushrk/toptrumps-client"
     ports:
       - 3000:3000
+    depends_on:
+      - server
 
   db:
     image: "koushrk/toptrumps-db"
