@@ -5,7 +5,7 @@ function FeatureInfo(props) {
 
     return (
         <div>
-            <Button size="medizm" color="primary" disabled>
+            <Button size="medium" color="primary" disabled>
                 {props.featureName}: {props.value}
             </Button>
         </div>
