@@ -25,7 +25,7 @@ class Cards extends React.Component {
                                 <CardMedia
                                     component="img"
                                     image={this.props.playerCard.poster_path}
-                                    height="400"
+                                    height="380"
                                 />  
                                 <CardContent>
                                     <Typography gutterBottom variant="noWrap">
@@ -66,7 +66,7 @@ class Cards extends React.Component {
                                 <CardMedia
                                     component="img"
                                     image={this.props.computerCard.poster_path}
-                                    height="400"
+                                    height="380"
                                 />
                                 <CardContent>
                                     <Typography gutterBottom variant="noWrap">

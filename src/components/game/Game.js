@@ -1,5 +1,10 @@
 import React from "react";
 import Cards from "./cards/Cards";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import { withRouter } from "react-router-dom";
 
 const NO_OF_ROUNDS = 10;
@@ -197,14 +202,16 @@ class Game extends React.Component {
                         handleSelection = {this.handleSelection}
                     />
                 </div>
-                <div className="game-info">
-                    <div>Score Player: {this.state.playerScore}</div>
-                    <div>Score Computer: {this.state.computerScore}</div>
-                    <div>Round {this.state.currentRound}/{NO_OF_ROUNDS}</div>
-                    <button onClick={() => this.newGame()}>
+                <Card className="game-info">
+                    <CardContent>
+                        <Typography variant="subtitle2">Score Player: {this.state.playerScore}</Typography>
+                        <Typography variant="subtitle2">Score Computer: {this.state.computerScore}</Typography>
+                        <Typography variant="subtitle2">Round {this.state.currentRound}/{NO_OF_ROUNDS}</Typography>
+                    </CardContent>
+                    <Button onClick={() => this.newGame()} variant="contained">
                         New Game
-                    </button>
-                </div>
+                    </Button>
+                </Card>
             </div>
         );
     }
