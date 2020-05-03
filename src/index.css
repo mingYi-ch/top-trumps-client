@@ -38,23 +38,13 @@ button {
   padding: 30px;
 }
 
-.card {
+.materialCards {
   text-align: left;
-  border: solid black 1px;
+  width: 300px;
+  height: 660px;
   margin: 20px;
-  padding: 50px;
 }
 
 .game-info {
   font-size: small;
-  padding: 10px;
-}
-
-.moviePicture {
-  text-align: center;
-  border: solid black 1px;
-  margin: 20px;
-  padding: 20px;
-  white-space: nowrap;
-  height: 200px; /* change this eventually */
 }

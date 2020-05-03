@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 const NO_OF_ROUNDS = 10;
 const API_HOST = "0.0.0.0";
 const API_PORT = "5001"
-const POSTER_PREFIX = "http://image.tmdb.org/t/p/w185/";
+const POSTER_PREFIX = "http://image.tmdb.org/t/p/w185";
 
 class Game extends React.Component {
 
@@ -126,7 +126,7 @@ class Game extends React.Component {
             },
             computerCard: {
                 title: card2.title,
-                poster_path: POSTER_PREFIX.concat(card1.poster_path),
+                poster_path: POSTER_PREFIX.concat(card2.poster_path),
                 popularity: card2.popularity,
                 rating: card2.rating,
                 revenue$: card2.revenue,
