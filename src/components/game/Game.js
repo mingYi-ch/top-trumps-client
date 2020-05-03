@@ -1,11 +1,15 @@
 import React from "react";
 import Cards from "./cards/Cards";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import { withRouter } from "react-router-dom";
 
 const NO_OF_ROUNDS = 10;
 const API_HOST = "0.0.0.0";
 const API_PORT = "5001"
-const POSTER_PREFIX = "http://image.tmdb.org/t/p/w185/";
+const POSTER_PREFIX = "http://image.tmdb.org/t/p/w185";
 
 class Game extends React.Component {
 
@@ -34,7 +38,8 @@ class Game extends React.Component {
                 runtimeMin: 0.0
             },
             playerScore: 0,
-            computerScore: 0
+            computerScore: 0,
+            hideOpponentFeatures: false
         };
     }
 
@@ -126,13 +131,14 @@ class Game extends React.Component {
             },
             computerCard: {
                 title: card2.title,
-                poster_path: POSTER_PREFIX.concat(card1.poster_path),
+                poster_path: POSTER_PREFIX.concat(card2.poster_path),
                 popularity: card2.popularity,
                 rating: card2.rating,
                 revenue$: card2.revenue,
                 budget$: card2.budget,
                 runtimeMin: card2.runtime
             },
+            hideOpponentFeatures: true
         });
     }
 
@@ -183,8 +189,12 @@ class Game extends React.Component {
                 console.error("Chosen feature not handled in Game class!");
                 return;
         }
-        
-        this.updateScores(playerFeature, computerFeature);
+
+        this.setState({hideOpponentFeatures: false}, () => {
+            setTimeout(() => {
+                this.updateScores(playerFeature, computerFeature)
+            }, 2000);
+        });
     }
 
     render() {
@@ -195,16 +205,19 @@ class Game extends React.Component {
                         playerCard = {this.state.playerCard}
                         computerCard = {this.state.computerCard}
                         handleSelection = {this.handleSelection}
+                        hideOpponentFeatures = {this.state.hideOpponentFeatures}
                     />
                 </div>
-                <div className="game-info">
-                    <div>Score Player: {this.state.playerScore}</div>
-                    <div>Score Computer: {this.state.computerScore}</div>
-                    <div>Round {this.state.currentRound}/{NO_OF_ROUNDS}</div>
-                    <button onClick={() => this.newGame()}>
+                <Card className="game-info">
+                    <CardContent>
+                        <Typography variant="subtitle2">Score Player: {this.state.playerScore}</Typography>
+                        <Typography variant="subtitle2">Score Computer: {this.state.computerScore}</Typography>
+                        <Typography variant="subtitle2">Round {this.state.currentRound}/{NO_OF_ROUNDS}</Typography>
+                    </CardContent>
+                    <Button onClick={() => this.newGame()} variant="contained">
                         New Game
-                    </button>
-                </div>
+                    </Button>
+                </Card>
             </div>
         );
     }

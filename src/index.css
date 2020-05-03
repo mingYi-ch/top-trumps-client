@@ -35,26 +35,21 @@ button {
 
 .cards {
   margin: auto;
-  padding: 30px;
+  padding-bottom: 20px;
 }
 
-.card {
+.materialCards {
   text-align: left;
-  border: solid black 1px;
-  margin: 20px;
-  padding: 50px;
+  width: 300px;
+  height: auto;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding-bottom: 5px;
 }
 
 .game-info {
+  margin: auto;
   font-size: small;
-  padding: 10px;
-}
-
-.moviePicture {
-  text-align: center;
-  border: solid black 1px;
-  margin: 20px;
-  padding: 20px;
-  white-space: nowrap;
-  height: 200px; /* change this eventually */
+  width: 200px;
+  padding-bottom: 15px;
 }
