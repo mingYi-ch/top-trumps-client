@@ -77,22 +77,27 @@ class Cards extends React.Component {
                                     <FeatureInfo
                                         featureName={"Popularity"}
                                         value={this.props.computerCard.popularity}
+                                        hide={this.props.hideOpponentFeatures}
                                     />
                                     <FeatureInfo
                                         featureName={"Rating"}
                                         value={this.props.computerCard.rating}
+                                        hide={this.props.hideOpponentFeatures}
                                     />
                                     <FeatureInfo
                                         featureName={"Revenue"}
                                         value={this.props.computerCard.revenue$.toString().concat(" $")}
+                                        hide={this.props.hideOpponentFeatures}
                                     />
                                     <FeatureInfo
                                         featureName={"Budget"}
                                         value={this.props.computerCard.budget$.toString().concat(" $")}
+                                        hide={this.props.hideOpponentFeatures}
                                     />
                                     <FeatureInfo
                                         featureName={"Run time"}
                                         value={this.props.computerCard.runtimeMin.toString().concat(" min")}
+                                        hide={this.props.hideOpponentFeatures}
                                     />
                                 </CardActionArea>
                             </Card>

@@ -3,10 +3,12 @@ import Button from '@material-ui/core/Button';
 
 function FeatureInfo(props) {
 
+    let feature = (props.hide) ? "???" : props.value;
+    
     return (
         <div>
             <Button size="medium" color="primary" disabled>
-                {props.featureName}: {props.value}
+                {props.featureName}: {feature}
             </Button>
         </div>
     );

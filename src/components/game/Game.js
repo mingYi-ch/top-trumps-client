@@ -38,7 +38,8 @@ class Game extends React.Component {
                 runtimeMin: 0.0
             },
             playerScore: 0,
-            computerScore: 0
+            computerScore: 0,
+            hideOpponentFeatures: false
         };
     }
 
@@ -137,6 +138,7 @@ class Game extends React.Component {
                 budget$: card2.budget,
                 runtimeMin: card2.runtime
             },
+            hideOpponentFeatures: true
         });
     }
 
@@ -187,8 +189,12 @@ class Game extends React.Component {
                 console.error("Chosen feature not handled in Game class!");
                 return;
         }
-        
-        this.updateScores(playerFeature, computerFeature);
+
+        this.setState({hideOpponentFeatures: false}, () => {
+            setTimeout(() => {
+                this.updateScores(playerFeature, computerFeature)
+            }, 2000);
+        });
     }
 
     render() {
@@ -199,6 +205,7 @@ class Game extends React.Component {
                         playerCard = {this.state.playerCard}
                         computerCard = {this.state.computerCard}
                         handleSelection = {this.handleSelection}
+                        hideOpponentFeatures = {this.state.hideOpponentFeatures}
                     />
                 </div>
                 <Card className="game-info">
