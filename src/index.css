@@ -29,10 +29,6 @@ button {
   box-sizing: border-box;
 }
 
-.game {
-  text-align: center;
-}
-
 .cards {
   margin: auto;
   padding-bottom: 20px;

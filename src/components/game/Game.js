@@ -4,12 +4,26 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import { styled } from '@material-ui/core/styles';
 import { withRouter } from "react-router-dom";
 
 const NO_OF_ROUNDS = 10;
 const API_HOST = "0.0.0.0";
 const API_PORT = "5001"
 const POSTER_PREFIX = "http://image.tmdb.org/t/p/w185";
+
+const MyBox = styled(Box)({
+    textAlign: 'center',
+    spacing: '20px',
+    padding: '25px',
+    marginLeft: '20%',
+    marginRight: '20%',
+    background: 'linear-gradient(90deg, #20B2AA 30%, #e1ddbc 80%)',
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    border: 2,
+    borderRadius: 20
+});
 
 class Game extends React.Component {
 
@@ -199,7 +213,7 @@ class Game extends React.Component {
 
     render() {
         return (
-            <div className="game">
+            <MyBox className="game">
                 <div className="game-board">
                     <Cards
                         playerCard = {this.state.playerCard}
@@ -218,7 +232,7 @@ class Game extends React.Component {
                         New Game
                     </Button>
                 </Card>
-            </div>
+            </MyBox>
         );
     }
 }
