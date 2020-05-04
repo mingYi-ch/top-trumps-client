@@ -133,9 +133,12 @@ class Game extends React.Component {
         let card1 = this.state.cardsData[Object.keys(this.state.cardsData)[playerCardIndex]];
         let card2 = this.state.cardsData[Object.keys(this.state.cardsData)[computerCardIndex]];
         
+        let title1 = (card1.title.length > 29) ? card1.title.toString().substring(0,30).concat("...") : card1.title;
+        let title2 = (card2.title.length > 29) ? card2.title.toString().substring(0,30).concat("...") : card2.title;
+
         this.setState({
             playerCard: {
-                title: card1.title,
+                title: title1,
                 poster_path: POSTER_PREFIX.concat(card1.poster_path),
                 popularity: card1.popularity,
                 rating: card1.rating,
@@ -144,7 +147,7 @@ class Game extends React.Component {
                 runtimeMin: card1.runtime
             },
             computerCard: {
-                title: card2.title,
+                title: title2,
                 poster_path: POSTER_PREFIX.concat(card2.poster_path),
                 popularity: card2.popularity,
                 rating: card2.rating,
