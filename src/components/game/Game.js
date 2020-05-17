@@ -128,8 +128,8 @@ class Game extends React.Component {
         let title1 = (card1.title.length > 29) ? card1.title.toString().substring(0,30).concat("...") : card1.title;
         let title2 = (card2.title.length > 29) ? card2.title.toString().substring(0,30).concat("...") : card2.title;
 
-        let omdbURL1 = OMDB_URL_PREFIX + encodeURI(title1) + OMDB_API_KEY_SUFFIX; 
-        let omdbURL2 = OMDB_URL_PREFIX + encodeURI(title2) + OMDB_API_KEY_SUFFIX; 
+        let omdbURL1 = OMDB_URL_PREFIX + encodeURI(card1.title.toString()) + OMDB_API_KEY_SUFFIX;
+        let omdbURL2 = OMDB_URL_PREFIX + encodeURI(card2.title.toString()) + OMDB_API_KEY_SUFFIX;
 
         this.setState({hideOpponentFeatures: true});
 
