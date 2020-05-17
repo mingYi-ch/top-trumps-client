@@ -12,7 +12,8 @@ import { withRouter } from "react-router-dom";
 const NO_OF_ROUNDS = 10;
 const API_HOST = "0.0.0.0";
 const API_PORT = "5001"
-const POSTER_PREFIX = "http://image.tmdb.org/t/p/w185";
+const OMDB_URL_PREFIX = "http://www.omdbapi.com/?t=";
+const OMDB_API_KEY_SUFFIX = "&apikey=8a7683a8";
 
 const MyBox = styled(Box)({
     textAlign: 'center',
@@ -117,7 +118,7 @@ class Game extends React.Component {
         this.setState({currentRound: incrementedRound}, () => this.updateCards());
     }
 
-    updateCards () {
+    updateCards() {
         let playerCardIndex = 2 * this.state.currentRound - 2;
         let computerCardIndex = playerCardIndex + 1;
         console.log("playerCardIndex: ".concat(playerCardIndex));
@@ -127,27 +128,50 @@ class Game extends React.Component {
         let title1 = (card1.title.length > 29) ? card1.title.toString().substring(0,30).concat("...") : card1.title;
         let title2 = (card2.title.length > 29) ? card2.title.toString().substring(0,30).concat("...") : card2.title;
 
-        this.setState({
-            playerCard: {
-                title: title1,
-                poster_path: POSTER_PREFIX.concat(card1.poster_path),
-                popularity: card1.popularity,
-                rating: card1.rating,
-                revenue$: card1.revenue,
-                budget$: card1.budget,
-                runtimeMin: card1.runtime
-            },
-            computerCard: {
-                title: title2,
-                poster_path: POSTER_PREFIX.concat(card2.poster_path),
-                popularity: card2.popularity,
-                rating: card2.rating,
-                revenue$: card2.revenue,
-                budget$: card2.budget,
-                runtimeMin: card2.runtime
-            },
-            hideOpponentFeatures: true
-        });
+        let omdbURL1 = OMDB_URL_PREFIX + encodeURI(title1) + OMDB_API_KEY_SUFFIX; 
+        let omdbURL2 = OMDB_URL_PREFIX + encodeURI(title2) + OMDB_API_KEY_SUFFIX; 
+
+        this.setState({hideOpponentFeatures: true});
+
+        fetch(omdbURL1)
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    playerCard: {
+                        title: title1,
+                        poster_path: data.Poster,
+                        popularity: card1.popularity,
+                        rating: card1.rating,
+                        revenue$: card1.revenue,
+                        budget$: card1.budget,
+                        runtimeMin: card1.runtime
+                    }
+                });
+            })
+            .catch(error => {
+                console.log(error);
+                return;
+            });
+
+        fetch(omdbURL2)
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    computerCard: {
+                        title: title2,
+                        poster_path: data.Poster,
+                        popularity: card2.popularity,
+                        rating: card2.rating,
+                        revenue$: card2.revenue,
+                        budget$: card2.budget,
+                        runtimeMin: card2.runtime
+                    }
+                });
+            })
+            .catch(error => {
+                console.log(error);
+                return;
+            });
     }
 
     retrieveCards() {
