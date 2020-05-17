@@ -13,6 +13,7 @@ const API_HOST = "0.0.0.0";
 const API_PORT = "5001"
 const OMDB_URL_PREFIX = "http://www.omdbapi.com/?t=";
 const OMDB_API_KEY_SUFFIX = "&apikey=8a7683a8";
+const NEW_ROUND_TIMEOUT_MS = 1600;
 
 const MyBox = styled(Box)({
     textAlign: 'center',
@@ -130,7 +131,6 @@ class Game extends React.Component {
     updateCards() {
         let playerCardIndex = 2 * this.state.currentRound - 2;
         let computerCardIndex = playerCardIndex + 1;
-        console.log("playerCardIndex: ".concat(playerCardIndex));
         let card1 = this.state.cardsData[Object.keys(this.state.cardsData)[playerCardIndex]];
         let card2 = this.state.cardsData[Object.keys(this.state.cardsData)[computerCardIndex]];
         
@@ -234,7 +234,7 @@ class Game extends React.Component {
         this.setState({hideOpponentFeatures: false}, () => {
             setTimeout(() => {
                 this.updateScores(playerFeature, computerFeature)
-            }, 2000);
+            }, NEW_ROUND_TIMEOUT_MS);
         });
     }
 
