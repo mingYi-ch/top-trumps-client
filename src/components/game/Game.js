@@ -1,5 +1,6 @@
 import React from "react";
 import Cards from "./cards/Cards";
+import WinnerAlert from "./WinnerAlert";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
@@ -30,6 +31,7 @@ class Game extends React.Component {
     constructor(props) {
         super(props);
         this.handleSelection = this.handleSelection.bind(this);
+        this.newGame = this.newGame.bind(this);
         this.state = {
             currentRound: 1,
             cardsData: undefined,
@@ -53,7 +55,9 @@ class Game extends React.Component {
             },
             playerScore: 0,
             computerScore: 0,
-            hideOpponentFeatures: false
+            hideOpponentFeatures: false,
+            winnerMessage: "No winner yet",
+            showWinnerAlert: false
         };
     }
 
@@ -67,30 +71,17 @@ class Game extends React.Component {
 
     newGame() {
         this.retrieveCards();
-        this.setState({currentRound: 1, playerScore: 0, computerScore: 0});
+        this.setState({currentRound: 1, playerScore: 0, computerScore: 0, showWinnerAlert: false});
     }
 
     handleRanks() {
-        /**
-         * Not sure whether using setTimeout is good practice here.
-         * The reason I use it is because the callback for the setState
-         * method at l. 81, 82 does not seem to work properly.
-         */
+        this.setState({showWinnerAlert: true})
         if (this.state.playerScore > this.state.computerScore) {
-            setTimeout(() => {
-                alert("You win!");
-                this.newGame();
-            }, 100);
+            this.setState({winnerMessage: "You win!"});
         } else if (this.state.computerScore > this.state.playerScore) {
-            setTimeout(() => {
-                alert("Computer wins!");
-                this.newGame();
-            }, 100);
+            this.setState({winnerMessage: "Computer wins!"});
         } else {
-            setTimeout(() => {
-                alert("It's a tie!");
-                this.newGame();
-            }, 100);
+            this.setState({winnerMessage: "It's a tie!"});
         }
     }
 
@@ -217,6 +208,13 @@ class Game extends React.Component {
     render() {
         return (
             <MyBox className="game">
+                <div>
+                    <WinnerAlert
+                        show = {this.state.showWinnerAlert}
+                        winnerAnnouncement = {this.state.winnerMessage}
+                        newGame = {this.newGame}
+                    />
+                </div>
                 <div className="game-board">
                     <Cards
                         playerCard = {this.state.playerCard}
