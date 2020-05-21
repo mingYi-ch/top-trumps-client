@@ -27,10 +27,10 @@ The [server repository](github.com/kaushik-rohit/top-trumps-server) is the only 
     - REST API Specification
     - Additional desired features (backlog)
     - Microservices architecture
-    - **TODO:**
-        - Agile strategy (Kanban)
-        - Git practices (Pullrequests)
-        - Testing
+    - Agile strategy (Kanban)
+    - Git practices (Pullrequests)
+    - Testing
+    - Documentation
 
 - [Wiki: Sprint documentation](https://github.com/kaushik-rohit/top-trumps-server/wiki/Sprint-Documentation)
     - Summarized records of weekly mutual sprint meetings
