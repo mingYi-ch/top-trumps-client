@@ -235,6 +235,8 @@ class Game extends React.Component {
                 <div>
                     <WinnerAlert
                         show = {this.state.showWinnerAlert}
+                        playerScore = {this.state.playerScore}
+                        computerScore = {this.state.computerScore}
                         winnerAnnouncement = {this.state.winnerMessage}
                         newGame = {this.newGame}
                     />
