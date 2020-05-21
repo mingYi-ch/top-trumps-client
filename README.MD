@@ -1,8 +1,16 @@
 # Top Trumps Movie Edition Client (frontend)
 
 ## Microservices
+### Docker Compose
+The application makes use of three docker microservices. Follow the steps below to start up all three interoperating microservices and access the web game:
+
+1) Navigate to the top level of the Client repository.
+2) Run command ``sudo docker-compose up``
+3) As soon as all dependencies are downloaded and all services have started up, navigate to [http://localhost:3000](http://localhost:3000) to access the web game.
+
 ### Docker
-The application makes use of docker containers. Follow the steps below to run it in docker
+
+To locally build and run the Client microservice, follow the following steps:
 
 1) To build the docker image run ``sudo docker build -t image_name:latest .``
 2) To run the docker image, use ``sudo docker run -p 3000:3000 -d image_name``
