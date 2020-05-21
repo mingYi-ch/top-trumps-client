@@ -15,6 +15,7 @@ const API_PORT = "5001"
 const OMDB_URL_PREFIX = "http://www.omdbapi.com/?t=";
 const OMDB_API_KEY_SUFFIX = "&apikey=8a7683a8";
 const NEW_ROUND_TIMEOUT_MS = 1600;
+const TOO_LITTLE_DATA_MSG = "Too little cards in the retrieved deck. Please try another filter..."
 
 const MyBox = styled(Box)({
     textAlign: 'center',
@@ -79,11 +80,11 @@ class Game extends React.Component {
     handleRanks() {
         this.setState({showWinnerAlert: true})
         if (this.state.playerScore > this.state.computerScore) {
-            this.setState({winnerMessage: "You win!"});
+            this.setState({winnerMessage: "You win! 🏆"});
         } else if (this.state.computerScore > this.state.playerScore) {
-            this.setState({winnerMessage: "Computer wins!"});
+            this.setState({winnerMessage: "Computer wins! 🖥️🤖"});
         } else {
-            this.setState({winnerMessage: "It's a tie!"});
+            this.setState({winnerMessage: "It's a tie! #👔"});
         }
     }
 
@@ -175,7 +176,6 @@ class Game extends React.Component {
     }
 
     retrieveCards() {
-        // TODO: Update game nr after each game
         let fetchURL = "http://"
             .concat(API_HOST)
             .concat(":")
@@ -184,8 +184,15 @@ class Game extends React.Component {
 
         fetch(fetchURL)
             .then(response => response.json())
-            .then(data => this.setState({cardsData: data},
-                () => this.updateCards() ))
+            .then(data => {
+                this.setState({cardsData: data});
+                // If received less than 20 cards: Re-route to login page
+                let len = Object.keys(data).length;
+                if(len < 20) {
+                    alert(TOO_LITTLE_DATA_MSG);
+                    this.props.history.push("/login")
+                } else this.updateCards();
+            })
             .catch(error => {
                 console.error("Failed to fetch data");
                 return;
