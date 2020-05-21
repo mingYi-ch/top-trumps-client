@@ -64,10 +64,6 @@ class Game extends React.Component {
         };
     }
 
-    /** 
-     * Using this standard method for synchronization reasons, since
-     * calling retrieveCards() from constructor doesn't work.
-     */
     componentDidMount() {
         this.retrieveCards();
     }
