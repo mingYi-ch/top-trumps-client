@@ -129,7 +129,8 @@ class Game extends React.Component {
         let omdbURL2 = OMDB_URL_PREFIX + encodeURI(card2.title.toString()) + OMDB_API_KEY_SUFFIX;
 
         this.setState({hideOpponentFeatures: true});
-
+        
+        // Querying OMDb to retrieve Amazon-hosted poster paths of movies 
         fetch(omdbURL1)
             .then(response => response.json())
             .then(data => {
