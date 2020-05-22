@@ -1,5 +1,6 @@
 # Top Trumps Movie Edition Client (frontend)
-
+## Demo
+![alt text](https://github.com/mingYi-ch/top-trumps-client/blob/develop/img/top_trumps_anim.gif "Top Trumps Gameplay")
 ## Microservices
 ### Docker Compose
 The application makes use of three docker microservices. Follow the steps below to start up all three interoperating microservices and access the web game:
