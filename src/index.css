@@ -28,3 +28,24 @@ button {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
+
+.cards {
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+.materialCards {
+  text-align: left;
+  width: 300px;
+  height: auto;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding-bottom: 5px;
+}
+
+.game-info {
+  margin: auto;
+  font-size: small;
+  width: 200px;
+  padding-bottom: 15px;
+}
