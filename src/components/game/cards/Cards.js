@@ -14,7 +14,7 @@ class Cards extends React.Component {
             <table className="cards">
                 <thead>
                     <tr>
-                        <th>Player's Card</th>
+                        <th>{localStorage.getItem('name') +'\'s Card'}</th>
                         <th>Computer's Card</th>
                     </tr>
                 </thead>
@@ -26,7 +26,7 @@ class Cards extends React.Component {
                                     component="img"
                                     image={this.props.playerCard.poster_path}
                                     height="380"
-                                />  
+                                />
                                 <CardContent>
                                     <Typography gutterBottom variant="noWrap">
                                         {this.props.playerCard.title}
