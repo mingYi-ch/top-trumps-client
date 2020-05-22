@@ -21,13 +21,16 @@ const MyBox = styled(Box)({
   border: 2,
   borderRadius: 20,
   boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-  spacing: '20px',
-  padding: '10px 10px 10px 10px'
+  padding: '10px 10px 10px 10px',
+  margin: '10px'
 });
 
 const MyContainer = styled(Container)({
-  spacing: '40px',
-  padding: '10px 10px 10px 10px'
+  padding: '10px 10px 10px 10px',
+  margin: '20px',
+  '& .errors': {
+    border: "1px solid red"
+  }
 });
 
 
@@ -42,33 +45,76 @@ class Login extends Component {
 
     constructor(props) {
       super(props);
-      this.state = {'genre': 'all'};
+      this.state = {'genre': 'all', 'name': '', 'start_year': '', 'end_year': ''};
+      this.errors = {'name': false, 'start_year': false, 'end_year': false};
       this.handleChange = this.handleChange.bind(this);
+      this.validatePlay = this.validatePlay.bind(this);
     }
 
     handleChange(e) {
-      this.setState((state) => {
-        return {genre: e.target.value}
-      });
-      //localStorage.setItem(key, e.target.value);
+      this.setState({[e.target.name] : e.target.value});
+      console.log(this.state);
+      localStorage.setItem(e.target.name, e.target.value);
     };
+
+    validatePlay(e) {
+      console.log(this.errors);
+      if(this.state.name.length === 0){
+        //empty name invalid input
+        this.errors.name = true;
+      }
+      else if(isNaN(this.state.start_year) ||
+              this.state.start_year.length !== 4){
+        //error with start year
+        this.errors.start_year = true;
+      }
+      else if (isNaN(this.state.end_year) ||
+               this.state.end_year.length !== 4){
+        //error with end Year
+        this.errors.end_year = true;
+      }
+      else{
+        // inputs are valid
+        this.props.history.push("/game");
+      }
+
+    }
 
     render(){
         return (
           <Grid container direction="column" alignItems="center" justify="center">
             <MyBox>
-            <form noValidate autoComplete="on">
               <MyContainer>
                 <FormLabel component="legend">Enter your nick:</FormLabel>
-                <TextField id="name" label="Player's Name" variant="outlined" />
+                <TextField
+                name="name"
+                id="name"
+                className={this.errors.name ? "error" : ""}
+                onChange={this.handleChange}
+                label="Player's Name"
+                variant="outlined"
+                />
               </MyContainer>
               <MyContainer>
                 <FormLabel component="legend">Year Range of Movies</FormLabel>
-                <TextField id="from" label="starting year" variant="outlined" />
-                <TextField id="to" label="ending year" variant="outlined" />
+                <TextField
+                  name="start_year"
+                  id="start_year"
+                  onChange={this.handleChange}
+                  label="starting year"
+                  variant="outlined"
+                />
+                <TextField
+                  name="end_year"
+                  id="end_year"
+                  onChange={this.handleChange}
+                  label="ending year"
+                  variant="outlined"
+                />
               </MyContainer>
               <MyContainer>
                 <TextField
+                  name="genre"
                   id="genre"
                   select
                   label="movie genre"
@@ -83,12 +129,11 @@ class Login extends Component {
                   ))}
                 </TextField>
               </MyContainer>
-            </form>
             <MyContainer>
               <MyButton onClick = {() => {this.props.history.push("/rules")}}>
                 Game Rules
               </MyButton>
-              <MyButton onClick = {() => {this.props.history.push("/game")}}>
+              <MyButton onClick={this.validatePlay}>
                 Lets Play!
               </MyButton>
             </MyContainer>
