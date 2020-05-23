@@ -177,7 +177,10 @@ class Game extends React.Component {
             .concat(API_HOST)
             .concat(":")
             .concat(API_PORT)
-            .concat("/game/1");
+            .concat("/game/")
+            .concat(localStorage.start_year + "/")
+            .concat(localStorage.end_year + "/")
+            .concat(localStorage.genre);
 
         fetch(fetchURL)
             .then(response => response.json())
