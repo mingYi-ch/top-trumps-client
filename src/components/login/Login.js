@@ -12,8 +12,25 @@ import Container from '@material-ui/core/Container';
 
 const genres = [
   'all',
-  'adult',
-  'adventure'
+  'Documentary', 
+  'History', 
+  'Mystery', 
+  'Family', 
+  'Fantasy', 
+  'Horror', 
+  'Animation', 
+  'War', 
+  'Adventure', 
+  'Music', 
+  'Comedy', 
+  'Western', 
+  'Action', 
+  'Drama', 
+  'Science Fiction', 
+  'Crime', 
+  'Romance', 
+  'Foreign', 
+  'Thriller'
 ];
 
 const MyBox = styled(Box)({
@@ -49,6 +66,7 @@ class Login extends Component {
       this.errors = {'name': false, 'start_year': false, 'end_year': false};
       this.handleChange = this.handleChange.bind(this);
       this.validatePlay = this.validatePlay.bind(this);
+      localStorage.genre = "all";
     }
 
     handleChange(e) {
