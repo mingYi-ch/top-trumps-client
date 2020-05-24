@@ -12,8 +12,25 @@ import Container from '@material-ui/core/Container';
 
 const genres = [
   'all',
-  'adult',
-  'adventure'
+  'Documentary', 
+  'History', 
+  'Mystery', 
+  'Family', 
+  'Fantasy', 
+  'Horror', 
+  'Animation', 
+  'War', 
+  'Adventure', 
+  'Music', 
+  'Comedy', 
+  'Western', 
+  'Action', 
+  'Drama', 
+  'Science Fiction', 
+  'Crime', 
+  'Romance', 
+  'Foreign', 
+  'Thriller'
 ];
 
 const MyBox = styled(Box)({
@@ -49,6 +66,7 @@ class Login extends Component {
       this.errors = {'name': false, 'start_year': false, 'end_year': false};
       this.handleChange = this.handleChange.bind(this);
       this.validatePlay = this.validatePlay.bind(this);
+      localStorage.genre = "all";
     }
 
     handleChange(e) {
@@ -62,16 +80,24 @@ class Login extends Component {
       if(this.state.name.length === 0){
         //empty name invalid input
         this.errors.name = true;
+        alert("Please enter your nickname...");
       }
       else if(isNaN(this.state.start_year) ||
               this.state.start_year.length !== 4){
         //error with start year
         this.errors.start_year = true;
+        alert("Wrong start year format detected...");
       }
       else if (isNaN(this.state.end_year) ||
                this.state.end_year.length !== 4){
         //error with end Year
         this.errors.end_year = true;
+        alert("Wrong end year format detected...");
+      }
+      else if (this.state.start_year > this.state.end_year){
+        this.errors.start_year = true;
+        this.errors.end_year = true;
+        alert("Start year must be <= end year...");
       }
       else{
         // inputs are valid
