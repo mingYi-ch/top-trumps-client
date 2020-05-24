@@ -12,7 +12,7 @@ import { withRouter } from "react-router-dom";
 const NO_OF_ROUNDS = 10;
 const API_HOST = "0.0.0.0";
 const API_PORT = "5001"
-const OMDB_URL_PREFIX = "http://www.omdbapi.com/?t=";
+const OMDB_URL_PREFIX = "http://www.omdbapi.com/?i=";
 const OMDB_API_KEY_SUFFIX = "&apikey=8a7683a8";
 const NEW_ROUND_TIMEOUT_MS = 1600;
 const TOO_LITTLE_DATA_MSG = "Too little cards in the retrieved deck. Please try another filter..."
@@ -124,9 +124,9 @@ class Game extends React.Component {
         
         let title1 = (card1.title.length > 29) ? card1.title.toString().substring(0,30).concat("...") : card1.title;
         let title2 = (card2.title.length > 29) ? card2.title.toString().substring(0,30).concat("...") : card2.title;
-
-        let omdbURL1 = OMDB_URL_PREFIX + encodeURI(card1.title.toString()) + OMDB_API_KEY_SUFFIX;
-        let omdbURL2 = OMDB_URL_PREFIX + encodeURI(card2.title.toString()) + OMDB_API_KEY_SUFFIX;
+        
+        let omdbURL1 = OMDB_URL_PREFIX + card1.imdb_id.toString() + OMDB_API_KEY_SUFFIX;
+        let omdbURL2 = OMDB_URL_PREFIX + card2.imdb_id.toString() + OMDB_API_KEY_SUFFIX;
 
         this.setState({hideOpponentFeatures: true});
         
