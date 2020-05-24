@@ -1,11 +1,11 @@
 # Top Trumps Movie Edition
 
-### Authors
+#### Authors
 Ming Yi, Rohit Kaushik, Timo Surbeck
 
 ### Introduction
-Welcome to the top-level README of our Advanced Software Engineering FS 20 group project! "Top Trumps Movie Edition" is a ReactJS based web game, where users can play Top Trumps in games of ten rounds against the computer, with card decks of a chosen year range and genre. For dividing up responsibilities into individual microservices, we decided to split up our application into three parts, namely 
-into a client (frontend), a server as well as a database. For each of the three parts there is a publicly accessible GitHub repository. Please access it via the URLs specified in the section below.
+Welcome to the top-level README of our Advanced Software Engineering FS 20 group project! "Top Trumps Movie Edition" is a ReactJS based web game that lets users play a simplified version of [Top Trumps](https://en.wikipedia.org/wiki/Top_Trumps) in games of ten rounds against the computer, with card decks of a chosen year range and genre. For dividing up responsibilities into individual microservices, we decided to split up our application into three tiers, namely 
+into a Client (frontend), a Server as well as a Database part. For each of the three parts there is a publicly accessible GitHub repository. Please access it via the URLs specified in the section below.
 
 ### GitHub Repositories
 - Client (frontend, ReactJS): [github.com/mingYi-ch/top-trumps-client](https://github.com/mingYi-ch/top-trumps-client)
