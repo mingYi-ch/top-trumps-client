@@ -1,6 +1,8 @@
 # Top Trumps Movie Edition Client (frontend)
-
 #### Please find the project's top-level informations in file README_topLevel.md .
+
+## Demo
+![alt text](https://github.com/mingYi-ch/top-trumps-client/blob/develop/img/top_trumps_anim.gif "Top Trumps Gameplay")
 
 ## Microservices
 ### Docker Compose
