@@ -12,7 +12,7 @@ import Container from '@material-ui/core/Container';
 
 const genres = [
   'all',
-  'Documentary', 
+  // 'Documentary', 
   'History', 
   'Mystery', 
   'Family', 
@@ -23,13 +23,13 @@ const genres = [
   'Adventure', 
   'Music', 
   'Comedy', 
-  'Western', 
   'Action', 
   'Drama', 
   'Science Fiction', 
   'Crime', 
   'Romance', 
-  'Foreign', 
+  // 'Foreign',
+  // 'Western',
   'Thriller'
 ];
 
@@ -62,7 +62,7 @@ class Login extends Component {
 
     constructor(props) {
       super(props);
-      this.state = {'genre': 'all', 'name': '', 'start_year': "1915", 'end_year': "2016", movie_num: 1576};
+      this.state = {'genre': 'all', 'name': '', 'start_year': "1915", 'end_year': "2016", movie_num: 0};
       this.errors = {'name': false, 'start_year': false, 'end_year': false};
       this.handleChange = this.handleChange.bind(this);
       this.validatePlay = this.validatePlay.bind(this);
