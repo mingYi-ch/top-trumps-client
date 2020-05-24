@@ -1,5 +1,7 @@
 # Top Trumps Movie Edition Client (frontend)
 
+#### Please find the project's top-level informations in file README_topLevel.md .
+
 ## Microservices
 ### Docker Compose
 The application makes use of three docker microservices. Follow the steps below to start up all three interoperating microservices and access the web game:
