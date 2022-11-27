@@ -9,7 +9,7 @@
 The application makes use of three docker microservices. Follow the steps below to start up all three interoperating microservices and access the web game:
 
 1) Navigate to the top level of the Client repository.
-2) Run command ``sudo docker-compose up``
+2) Run command ``sudo docker compose up``
 3) As soon as all dependencies are downloaded and all services have started up, navigate to [http://localhost:3000](http://localhost:3000) to access the web game.
 
 ### Docker
